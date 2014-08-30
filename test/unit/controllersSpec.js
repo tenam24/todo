@@ -3,9 +3,27 @@
 /* jasmine specs for controllers go here */
 
 describe('controllers', function(){
-  beforeEach(module('myApp.controllers'));
+  beforeEach(module('mock.firebase', 'myApp.controllers'));
 
+  describe('TodoController', function() {
+    var TodoController, $scope;
+    beforeEach(function() {
+      module(function($provide) {
+        // comes from routes.js in the resolve: {} attribute
+        $provide.value('Todo', {name: 'test123', done: false});
+      });
+      inject(function($controller) {
+        $scope = {};
+        TodoController = $controller('TodoController', {$scope: $scope, Todos: {name: 'test123', done: false}});
+      });
+    });
 
+    it('should create user in scope', function() {
+      //expect($scope.todo).toBeDefined();
+    });
+  });
+
+  /*
   it('should ....', inject(function($controller) {
     //spec body
     
@@ -35,4 +53,5 @@ describe('controllers', function(){
     var myCtrl2 = $controller('MyCtrl2', { $scope: {} });
     expect(myCtrl2).toBeDefined();
   }));
+  */
 });

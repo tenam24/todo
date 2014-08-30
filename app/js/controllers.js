@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('TodoController', function($scope, Todos) {
+  .controller('TodoController', ['$scope', 'Todos', function($scope, Todos) {
         $scope.todos = Todos;
         //$scope.todos = [
         //  {text:'learn angular', done:true},
@@ -42,8 +42,8 @@ angular.module('myApp.controllers', [])
             if (!todo.done) $scope.todos.push(todo);
           });
         };
-  })
-  .controller('DeleteTodoController', function($scope, $location, $routeParams, Todos){
+  }])
+  .controller('DeleteTodoController', ['$scope', '$location', '$routeParams', 'Todos', function($scope, $location, $routeParams, Todos){
       var todoId = $routeParams.todoId,
             todoIndex;
             
@@ -54,7 +54,7 @@ angular.module('myApp.controllers', [])
       Todos.$remove($scope.todo).then(function(){
           $location.path('/todo'); //need to go back to list otherwise add function will not work next time
       });
-  })
+  }])
   .controller('MyCtrl2', function($scope, Todos) {
     console.log($scope);
   });
