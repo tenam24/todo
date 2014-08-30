@@ -4,6 +4,7 @@
 
 describe('controllers', function(){
   beforeEach(module('mock.firebase', 'myApp.controllers'));
+  //beforeEach(module('myApp.controllers'));
 
   describe('TodoController', function() {
     var TodoController, $scope;
