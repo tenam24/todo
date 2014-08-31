@@ -16,6 +16,6 @@ deploy:
   provider: npm
   email: haule8@gmail.com
   api_key: 
-  	secure: nl7MIl59cqGXtS0N9n58bbb2pH9lj9MdGsNGLHQI
+    secure: nl7MIl59cqGXtS0N9n58bbb2pH9lj9MdGsNGLHQI
   on:
     repo: tenam24/todo
