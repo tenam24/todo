@@ -7,6 +7,7 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - npm start > /dev/null &
   - npm run update-webdriver
+  - npm install firebase
   - sleep 1 # give server time to start
 
 script:
@@ -19,3 +20,5 @@ deploy:
     secure: nl7MIl59cqGXtS0N9n58bbb2pH9lj9MdGsNGLHQI
   on:
     repo: tenam24/todo
+after_sucess:
+  - firebase deploy
