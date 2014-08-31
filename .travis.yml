@@ -7,18 +7,11 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - npm start > /dev/null &
   - npm run update-webdriver
-  - npm install firebase
+  - npm install -g firebase-tools
   - sleep 1 # give server time to start
 
 script:
   - node_modules/.bin/karma start test/karma.conf.js --no-auto-watch --single-run --reporters=dots --browsers=Firefox
   - node_modules/.bin/protractor test/protractor-conf.js --browser=firefox
-deploy:
-  provider: npm
-  email: haule8@gmail.com
-  api_key: 
-    secure: nl7MIl59cqGXtS0N9n58bbb2pH9lj9MdGsNGLHQI
-  on:
-    repo: tenam24/todo
-after_sucess:
+after_script:
   - firebase deploy
